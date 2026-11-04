@@ -1,0 +1,15 @@
+{% extends "_base.html" %}
+
+{% block body %}
+<h2>Dashboard - {{ user }}</h2>
+
+{% for a in appts %}
+<div class="card">
+    <b>{{ a['date'] }}</b><br>
+    <!-- FIXED: Jinja2 autoescaping protects against stored XSS -->
+    {{ a['reason'] }}
+</div>
+{% endfor %}
+
+<p><a href="/book">+ New appointment</a></p>
+{% endblock %}
